@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      
+      <!-- Todos os xhtml foram adaptados para as novas variáveis e models do banco de dados.
+Foi criado também o logar.xhtml que é a página que faz login o sistema todo e por ser login
+ele não usa o template padrão das outras páginas.-->
+      
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Login</title>
+</h:head>
+<h:body style="background-image: url('https://blog.desdelinux.net/wp-content/uploads/2014/10/libros_gratis.jpg');">
+	<h:form acceptcharset="ISO-8859-1">
+		<p:panelGrid columns="1" style="margin-left:30%; margin-top:100px;border-radius:5px;">
+			
+			ID: <p:inputText 
+				value="#{mFuncionarioBean.funcionario.id}">
+			</p:inputText>
+			Senha: <p:password  id="nonFeedback" value="#{mFuncionarioBean.funcionario.senha}" />	
+			<p:commandButton value="Login"
+				action="#{mFuncionarioBean.login(mFuncionarioBean.funcionario)}"></p:commandButton>
+		
+		</p:panelGrid>
+	</h:form>
+	</h:body>
+</html>

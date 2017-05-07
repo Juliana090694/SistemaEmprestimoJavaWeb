@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="template.xhtml">
+	
+	<h:form id="tableFuncionarios">
+		<p:dataTable value="#{mFuncionarioBean.funcionarios}" var="funcionariosCadastrados">
+		<p:column>
+				<f:facet name="header">
+					ID
+				</f:facet>
+				<h:outputText value="#{funcionariosCadastrados.id}">
+				</h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					Nome
+				</f:facet>
+				<h:outputText value="#{funcionariosCadastrados.nome}">
+				</h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					Função 
+				</f:facet>
+				<h:outputText value="#{funcionariosCadastrados.funcao}">
+				</h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					Telefone
+				</f:facet>
+				<h:outputText value="#{funcionariosCadastrados.telefone}">
+				</h:outputText>
+			</p:column>
+			<p:column>
+			<f:facet name="header">
+					Remover
+				</f:facet>
+			<p:commandButton value="Remover"
+				action="#{mFuncionarioBean.removerFuncionario(funcionariosCadastrados)}">
+			</p:commandButton>
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					Alterar
+				</f:facet>
+				<p:commandButton value="Alterar"
+					action="#{mFuncionarioBean.enviarDadosFuncionarioAlterar(funcionariosCadastrados)}">
+				</p:commandButton>
+
+			</p:column>
+
+		</p:dataTable>
+
+	</h:form>
+	
+	
+	
+	
+	
+	</ui:decorate>

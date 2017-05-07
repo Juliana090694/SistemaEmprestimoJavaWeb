@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="template.xhtml">
+<!-- Todos os xhtml foram adaptados para as novas variáveis e models do banco de dados.
+Foi criado também o logar.xhtml que é a página que faz login o sistema todo e por ser login
+ele não usa o template padrão das outras páginas.-->
+		<h:form acceptcharset="ISO-8859-1">
+		<p:panelGrid columns="2"
+			style="margin-left:30%; margin-top:100px;border-radius:5px;width:300px;">
+			Nome: <p:inputText pt:placeholder="Digite o nome da categoria"
+				value="#{mCategoriaBean.categoria.nome}"></p:inputText>
+			<p:commandButton value="Gravar"
+				action="#{mCategoriaBean.adicionarCategoria(mCategoriaBean.categoria)}"></p:commandButton>
+			<p:commandButton value="Lista" action="#{mCategoriaBean.irLista}"></p:commandButton>
+
+		</p:panelGrid>
+	</h:form>
+
+</ui:decorate>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="template.xhtml">
+	
+	<!-- Todos os xhtml foram adaptados para as novas variáveis e models do banco de dados.
+Foi criado também o logar.xhtml que é a página que faz login o sistema todo e por ser login
+ele não usa o template padrão das outras páginas.-->
+	
+	<h:form id="TableEmprestimos">
+		<p:dataTable value="#{mEmprestimoBean.emprestimos}" var="EmprestimoRealizado">
+			<p:column>
+				<f:facet name="header">
+					Código
+				</f:facet>
+					<h:outputText value="#{EmprestimoRealizado.id}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					Cliente
+				</f:facet>
+					<h:outputText value="#{EmprestimoRealizado.cliente.nome}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					Livro
+				</f:facet>
+					<h:outputText value="#{EmprestimoRealizado.livro.nome}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					Data do Empréstimo
+				</f:facet>
+					<h:outputText value="#{EmprestimoRealizado.data_retirada}">
+               			<f:convertDateTime pattern="dd/MM/yyyy" />
+            		</h:outputText>
+			</p:column>
+			<p:column>
+			<f:facet name="header">
+					Devolver
+				</f:facet>
+			<p:commandButton value="Devolver"
+				action="#{mEmprestimoBean.removerEmprestimo(EmprestimoRealizado)}">
+			</p:commandButton>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					Detalhar
+				</f:facet>
+				<p:commandButton value="Detalhar" 
+				action="#{mEmprestimoBean.detalhamentoDeEmprestimo(EmprestimoRealizado)}"> </p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</ui:decorate>	

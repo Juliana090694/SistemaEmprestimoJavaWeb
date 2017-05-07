@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="template.xhtml">
+
+<!-- Todos os xhtml foram adaptados para as novas variáveis e models do banco de dados.
+Foi criado também o logar.xhtml que é a página que faz login o sistema todo e por ser login
+ele não usa o template padrão das outras páginas.-->
+	
+	<p:commandButton value=" Ir Cadastro" action="#{mLivroBean.irCadastro}"></p:commandButton>
+	<h:form id="tableLivros">
+			<p:dataTable value="#{mLivroBean.livros}"
+				var="livroCadastrado">
+				<p:column>
+					<f:facet name="header">
+						Título
+					</f:facet>
+						<h:outputText value="#{livroCadastrado.nome}">
+						</h:outputText>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						Autor
+					</f:facet>
+						<h:outputText value="#{livroCadastrado.autor}">
+						</h:outputText>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						NºPáginas
+					</f:facet>
+						<h:outputText value="#{livroCadastrado.n_pag}">
+						</h:outputText>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						Editora
+					</f:facet>
+						<h:outputText value="#{livroCadastrado.editora}">
+						</h:outputText>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						Idioma
+					</f:facet>
+						<h:outputText value="#{livroCadastrado.tipo}">
+						</h:outputText>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						Emprestado
+					</f:facet>
+						<h:outputText value="#{livroCadastrado.emprestado}">
+						</h:outputText>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						ISBN
+					</f:facet>
+						<h:outputText value="#{livroCadastrado.situacao}">
+						</h:outputText>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						Edicao
+					</f:facet>
+						<h:outputText value="#{livroCadastrado.tipo_capa}">
+						</h:outputText>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						Categoria
+					</f:facet>
+						<h:outputText value="#{livroCadastrado.categoria.nome}">
+						</h:outputText>
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">
+					Remover
+				</f:facet>
+					<p:commandButton value="Remover"
+						action="#{mLivroBean.removerLivro(livroCadastrado)}">
+					</p:commandButton>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+					Alterar
+				</f:facet>
+					<p:commandButton value="Alterar"
+						action="#{mLivroBean.enviarLivroParaAlterar(livroCadastrado)}">
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+			
+		</h:form>
+		</ui:decorate>

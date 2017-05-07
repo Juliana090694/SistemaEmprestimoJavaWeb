@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="template.xhtml">
+	
+	<!-- Todos os xhtml foram adaptados para as novas variáveis e models do banco de dados.
+Foi criado também o logar.xhtml que é a página que faz login o sistema todo e por ser login
+ele não usa o template padrão das outras páginas.-->
+
+	<h:form acceptcharset="ISO-8859-1">
+		<p:panelGrid columns="1"
+			style="margin-left:30%; margin-top:100px;border-radius:5px;">
+		<h3>Formulário para realizar um empréstimo.</h3>
+			Data de Empréstimo: <!-- <p:inputText pt:placeholder="YYYY-MM-DD" value="#{mEmprestimoBean.emprestimo.data_retirada}"></p:inputText> -->
+			<p:calendar id="effect" value="#{mEmprestimoBean.emprestimo.data_retirada}" effect="fold" />
+			Cliente:<p:selectOneMenu value="#{mEmprestimoBean.idCliente}">
+			<f:selectItem itemLabel="*Selecione um cliente*" itemValue="0"></f:selectItem>
+			<f:selectItems value="#{mClienteBean.clientes}" var="cliente" itemLabel="#{cliente.nome}"
+			 itemValue="#{cliente.id}"></f:selectItems>			
+			</p:selectOneMenu>
+			Livro:<p:selectOneMenu value="#{mEmprestimoBean.idLivro}">
+			<f:selectItem itemLabel="*Selecione um livro" itemValue="0"></f:selectItem>
+			<f:selectItems value="#{mEmprestimoBean.livros}" var="livro" itemLabel="#{livro.nome}" itemValue="#{livro.id}"></f:selectItems>			
+			</p:selectOneMenu>
+			
+			<p:commandButton value="Finalizar" action="#{mEmprestimoBean.adicionarEmprestimo(mEmprestimoBean.emprestimo)}" ></p:commandButton>
+			
+			
+		</p:panelGrid>
+	</h:form>	
+	</ui:decorate>

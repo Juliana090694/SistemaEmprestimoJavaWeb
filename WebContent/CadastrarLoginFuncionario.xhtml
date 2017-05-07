@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="template.xhtml">
+	
+	<h:form acceptcharset="ISO-8859-1">
+		<p:panelGrid columns="1" style="margin-left:30%; margin-top:100px;border-radius:5px;">
+			
+			Nome: <p:inputText pt:placeholder="Nome do funcionário"
+				value="#{mFuncionarioBean.funcionario.nome}">
+			</p:inputText>
+			Função: <p:inputText 
+			pt:placeholder="Função do funcionário"
+			value="#{mFuncionarioBean.funcionario.funcao}">
+			</p:inputText>
+			Telefone: <p:inputText
+				pt:placeholder="(00)0000-0000"
+				value="#{mFuncionarioBean.funcionario.telefone}">
+			</p:inputText>	
+			Senha: <h:inputSecret pt:placeholder="Digite uma senha"
+				value="#{mFuncionarioBean.funcionario.senha}">
+			</h:inputSecret>
+					
+			<p:commandButton value="Gravar"
+				action="#{mFuncionarioBean.adicionarFuncionario(mFuncionarioBean.funcionario)}"></p:commandButton>
+	
+	</p:panelGrid>
+	</h:form>
+	</ui:decorate>

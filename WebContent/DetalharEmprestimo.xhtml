@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="template.xhtml">
+	
+	<!-- Todos os xhtml foram adaptados para as novas variáveis e models do banco de dados.
+Foi criado também o logar.xhtml que é a página que faz login o sistema todo e por ser login
+ele não usa o template padrão das outras páginas.-->
+	
+	<h:form acceptcharset="ISO-8859-1">
+		<p:panelGrid columns="1" style="margin-left:20%; margin-top:100px; border-radiu:5px;">
+			<h3>Detalhamento do Empréstimo</h3>
+				<p><h:outputText value="id: "></h:outputText><h:outputText value="#{mEmprestimoBean.emprestimo.id}"></h:outputText></p>
+				<p><h:outputText value="Data do empréstimo: "></h:outputText><h:outputText value="#{mEmprestimoBean.emprestimo.data_retirada}">
+                	<f:convertDateTime pattern="dd/MM/yyyy" />
+            	</h:outputText></p>
+			<br></br>
+			<h3><h:outputText value="Dados do cliente"></h:outputText></h3>
+			<div class="ui-g"><h:outputText value="id: "></h:outputText> <h:outputText value="#{mEmprestimoBean.emprestimo.cliente.id}"></h:outputText> </div>
+			<div class="ui-g"><h:outputText value="Nome: "></h:outputText>  <h:outputText value="#{mEmprestimoBean.emprestimo.cliente.nome}"></h:outputText> </div> 
+			<div class="ui-g"><h:outputText value="CPF: "></h:outputText> <h:outputText value="#{mEmprestimoBean.emprestimo.cliente.cpf}"></h:outputText> </div>
+			<div class="ui-g"><h:outputText value="Email: "></h:outputText>  <h:outputText value="#{mEmprestimoBean.emprestimo.cliente.email}"></h:outputText> </div>
+			<div class="ui-g"><h:outputText value="Telefone: "></h:outputText>  <h:outputText value="#{mEmprestimoBean.emprestimo.cliente.telefone}"></h:outputText> </div>
+			<br></br>
+			<br></br>
+			<div class="ui-g"> <h:outputText value="Informações do livro"></h:outputText></div>
+			<div class="ui-g"><h:outputText value="id: "></h:outputText> <h:outputText value="#{mEmprestimoBean.emprestimo.livro.id}"></h:outputText> </div>
+			<div class="ui-g"><h:outputText value="Nome: "></h:outputText> <h:outputText value="#{mEmprestimoBean.emprestimo.livro.nome}"></h:outputText> </div>
+			<div class="ui-g"><h:outputText value="Autor: "></h:outputText> <h:outputText value="#{mEmprestimoBean.emprestimo.livro.autor}"></h:outputText> </div>
+			<div class="ui-g"><h:outputText value="Nº de Páginas: "></h:outputText> <h:outputText value="#{mEmprestimoBean.emprestimo.livro.n_pag}"></h:outputText> </div>
+			<div class="ui-g"><h:outputText value="Editora: "></h:outputText> <h:outputText value="#{mEmprestimoBean.emprestimo.livro.editora}"></h:outputText> </div>
+			<div class="ui-g"><h:outputText value="Tipo: "></h:outputText> <h:outputText value="#{mEmprestimoBean.emprestimo.livro.tipo}"></h:outputText> </div>
+			<div class="ui-g"><h:outputText value="ISBN: "></h:outputText> <h:outputText value="#{mEmprestimoBean.emprestimo.livro.situacao}"></h:outputText> </div>
+			<div class="ui-g"><h:outputText value="Edição: "></h:outputText> <h:outputText value="#{mEmprestimoBean.emprestimo.livro.tipo_capa}"></h:outputText> </div>
+			
+		</p:panelGrid>
+	</h:form>	
+	</ui:decorate>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+<!-- Aqui estão os hibernate mapping, que pegam o que tem nos models e traduz para comandos 
+SQL através da bruxaria chamada hibernate. No caso desse programa foi tudo feito a mão 
+mesmo porque assim aprende bem mais e fica mais organizado e completo
+
+Todo <Classe>.hml.xml Possuem suas "<property>" que tem o "name"(nome da variável),
+o "column(coluna do banco de dados) e o type(tipo) que é o que define o que é aquela variável
+algumas classes tem relações de chaves estrangeiras por one-to-many que não estou afim 
+de explicar pois é 4:30 da manhã mas em resumo transforma classes em id's para relacionar 
+com o banco nos dois sentidos-->
+  <class name="com.livros.model.Categoria" table="Categoria">  
+    <id name="id" type="int" column="id">
+         <generator class="increment"/>
+    </id>
+            
+    <property name="nome" column="Nome" type="string"/> 
+    <property name="descricao" column="Descricao" type="string"/> 
+    
+    <set name="livros" table="Livro"
+	inverse="true" lazy="true" fetch="select">
+    	<key>
+    		<column name="categoria"/>
+       	</key>
+    	<one-to-many class="com.livros.model.Livro" />
+    </set>
+    
+    <!--  <one-to-one name="id" class="com.livros.model.Livro"
+                constrained="true"></one-to-one> -->
+            
+  </class>  
+            
+ </hibernate-mapping>  

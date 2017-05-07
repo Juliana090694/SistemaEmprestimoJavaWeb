@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="template.xhtml">
+<!-- Todos os xhtml foram adaptados para as novas variáveis e models do banco de dados.
+Foi criado também o logar.xhtml que é a página que faz login o sistema todo e por ser login
+ele não usa o template padrão das outras páginas.-->
+	<h:form acceptcharset="ISO-8859-1">
+		<p:panelGrid columns="2"
+			style="margin-left:20%; margin-top:100px; border-radiu:5px;">
+			Os dados abaixo serão alterados
+			Título: <p:inputText pt:placeholder="Digite o título" value="#{mLivroBean.livro.nome}">
+			</p:inputText>
+			Autor: <p:inputText pt:placeholder="Digite nome do autor" value="#{mLivroBean.livro.autor}">
+			</p:inputText>
+			Nº páginas: <p:inputText
+				pt:placeholder="Digite o número de páginas" value="#{mLivroBean.livro.n_pag}">
+			</p:inputText>
+			Editora: <p:inputText
+				pt:placeholder="Digite a editora" value="#{mLivroBean.livro.editora}">
+			</p:inputText>
+			Idioma: <p:inputText
+				pt:placeholder="Digite o idioma" value="#{mLivroBean.livro.tipo}">
+			</p:inputText>
+			Data de publicação: <p:inputText
+				pt:placeholder="00/00/0000" value="#{mLivroBean.livro.publicacao}">
+			</p:inputText>
+			ISBN: <p:inputText
+				 pt:placeholder="ISBN" value="#{mLivroBean.livro.situacao}">
+			</p:inputText>
+			Edicao: <p:inputText
+				 pt:placeholder="Número da Edição" value="#{mLivroBean.livro.tipo_capa}">
+			</p:inputText>
+			Categoria:
+			<p:selectOneMenu value="#{mLivroBean.idCategoria}">
+				<f:selectItem itemLabel="-Selecione-" itemValue="0">
+				</f:selectItem>
+				<f:selectItems value="#{mCategoriaBean.getCategorias()}"
+				var="categoria" itemLabel="#{categoria.nome}"
+				itemValue="#{categoria.id}">
+				</f:selectItems>		
+			</p:selectOneMenu>
+			<p:commandButton value="Alterar"
+				action="#{mLivroBean.alterarLivro(mLivroBean.livro)}"></p:commandButton>
+		</p:panelGrid>
+	</h:form>
+</ui:decorate>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="template.xhtml">
+<!-- Todos os xhtml foram adaptados para as novas variáveis e models do banco de dados.
+Foi criado também o logar.xhtml que é a página que faz login o sistema todo e por ser login
+ele não usa o template padrão das outras páginas.-->
+		
+		<h:form id="tableCategorias" style="margin-top:20px;">
+		<p:commandButton value="Voltar Cadastro" action="#{mCategoriaBean.irCadastro()}"></p:commandButton>
+			<p:dataTable value="#{mCategoriaBean.categorias}"
+				var="categoriaCadastrada">
+				<p:column>
+					<f:facet name="header">
+					Nome da Categoria
+				</f:facet>
+					<h:outputText value="#{categoriaCadastrada.nome}">
+					</h:outputText>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+					Remover
+				</f:facet>
+					<p:commandButton value="Remover"
+						action="#{mCategoriaBean.removerCategoria(categoriaCadastrada)}">
+					</p:commandButton>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+					Alterar
+				</f:facet>
+					<p:commandButton value="Alterar"
+						action="#{mCategoriaBean.enviarDadosCategoriaAlterar(categoriaCadastrada)}">
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:decorate>

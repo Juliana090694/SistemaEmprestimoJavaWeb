@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Aqui estão os hibernate mapping, que pegam o que tem nos models e traduz para comandos 
+SQL através da bruxaria chamada hibernate. No caso desse programa foi tudo feito a mão 
+mesmo porque assim aprende bem mais e fica mais organizado e completo
+
+Todo <Classe>.hml.xml Possuem suas "<property>" que tem o "name"(nome da variável),
+o "column(coluna do banco de dados) e o type(tipo) que é o que define o que é aquela variável
+algumas classes tem relações de chaves estrangeiras por one-to-many que não estou afim 
+de explicar pois é 4:30 da manhã mas em resumo transforma classes em id's para relacionar 
+com o banco nos dois sentidos-->
+<hibernate-mapping>
+  <class name="com.livros.model.Livro" table="Livro">  
+    <id name="id" type="int" column="id">
+         <generator class="increment"/>
+      </id>
+            
+    <property name="nome" column="Nome" type="string"/> 
+    <property name="autor" column="Autor" type="string"/>
+    <property name="tipo" column="Tipo" type="string"/>
+    <property name="colecao" column="Colecao" type="string"/>
+    <property name="n_pag" column="N_pag" type="integer"/>
+    <property name="tipo_capa" column="Tipo_capa" type="string"/>
+    <property name="editora" column="Editora" type="string"/>
+    <property name="publicacao" column="Publicacao" type="string"/>
+    <property name="situacao" column="Situacao" type="string"/>
+    <property name="emprestado" column="Emprestado" type="boolean"/>
+    <property name="localizacao" column="Localizacao" type="string"/>
+    <many-to-one name="categoria" class="com.livros.model.Categoria" fetch="select">
+    	<column name="Categoria" />
+    </many-to-one>
+    
+    <set name="emprestimos" table="Emprestimo"
+	inverse="true" lazy="true" fetch="select">
+    	<key>
+    		<column name="livro"/>
+       	</key>
+    	<one-to-many class="com.livros.model.Emprestimo" />
+    </set>
+    
+    <!-- <property name="categoria" column="Categoria" type="com.livros.model.Categoria"/> -->
+            
+  </class>  
+            
+ </hibernate-mapping>  

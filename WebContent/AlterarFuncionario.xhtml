@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="template.xhtml">
+<!-- Todos os xhtml foram adaptados para as novas variáveis e models do banco de dados.
+Foi criado também o logar.xhtml que é a página que faz login o sistema todo e por ser login
+ele não usa o template padrão das outras páginas.-->
+
+	<h:form acceptcharset="ISO-8859-1">
+		<p:panelGrid columns="2"
+			style="margin-left:30%; margin-top:100px;border-radius:5px;">
+			Os dados abaixo serão alterados
+			<h:inputHidden value="#{mFuncionarioBean.funcionario.id}"></h:inputHidden>
+			
+			Nome: <p:inputText pt:placeholder="Nome do funcionário"
+				value="#{mFuncionarioBean.funcionario.nome}">
+			</p:inputText>
+			Função: <p:inputText 
+			pt:placeholder="Função do funcionário"
+			value="#{mFuncionarioBean.funcionario.funcao}">
+			</p:inputText>
+			Telefone: <p:inputText
+				pt:placeholder="(00)0000-0000"
+				value="#{mFuncionarioBean.funcionario.telefone}">
+			</p:inputText>	
+			Senha: <h:inputSecret pt:placeholder="Digite uma senha"
+				value="#{mFuncionarioBean.funcionario.senha}">
+			</h:inputSecret>
+			<p:commandButton value="Gravar"
+				action="#{mFuncionarioBean.alterarFuncionario(mFuncionarioBean.funcionario)}"></p:commandButton>
+			<p:commandButton value="Lista" action="#{mFuncionarioBean.irLista()}"></p:commandButton>
+
+		</p:panelGrid>
+	</h:form>
+	</ui:decorate>
